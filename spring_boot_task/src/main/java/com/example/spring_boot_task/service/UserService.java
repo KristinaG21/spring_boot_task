@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -25,15 +27,20 @@ public class UserService {
     }
 
 
-    public List<User> getByName(String name) {
-        return userRepository.findByFirstName(name);
+    public Optional<User> getByName(String name) {
+       return userRepository.findByFirstName(name);
+
+
     }
 
-    public void saveUser(User user) {
-        userRepository.save(user);
-    }
 
-    public List<User> getByAge(int age) {
+
+    public Optional<User> getByAge(int age) {
         return userRepository.findByAgeGreaterThan(age);
+    }
+
+    public User saveUser(User user) {
+        userRepository.save(user);
+        return user;
     }
 }
