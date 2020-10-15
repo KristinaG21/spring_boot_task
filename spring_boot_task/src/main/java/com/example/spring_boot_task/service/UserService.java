@@ -23,11 +23,17 @@ public class UserService {
     public User getById(int id) {
         return userRepository.getById(id);
     }
+
+
     public List<User> getByName(String name) {
-        return userRepository.getByName(name);
+        return userRepository.findByFirstName(name);
     }
 
     public void saveUser(User user) {
         userRepository.save(user);
+    }
+
+    public List<User> getByAge(int age) {
+        return userRepository.findByAgeGreaterThan(age);
     }
 }

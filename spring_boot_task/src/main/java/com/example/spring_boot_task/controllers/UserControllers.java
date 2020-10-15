@@ -29,6 +29,11 @@ public class UserControllers {
     public List<User> getByName(@PathVariable String name){
         return userService.getByName(name);
     }
+    @GetMapping("/users/age/{age}")
+    public List<User> getByAge(@PathVariable int age){
+        return userService.getByAge(age);
+    }
+
     @PostMapping("/users")
     public void saveUser(@Valid @RequestBody User user){
         userService.saveUser(user);
