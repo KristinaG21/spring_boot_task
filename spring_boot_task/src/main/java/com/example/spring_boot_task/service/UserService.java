@@ -34,7 +34,6 @@ public class UserService {
     }
 
 
-
     public Optional<User> getByAge(int age) {
         return userRepository.findByAgeGreaterThan(age);
     }

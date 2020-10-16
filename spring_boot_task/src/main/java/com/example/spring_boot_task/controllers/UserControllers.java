@@ -2,25 +2,28 @@ package com.example.spring_boot_task.controllers;
 
 
 
+import com.example.spring_boot_task.SpringBootTaskApplication;
 import com.example.spring_boot_task.exception.UserNotFoundException;
 import com.example.spring_boot_task.model.User;
 import com.example.spring_boot_task.service.UserService;
-import javassist.NotFoundException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.persistence.EntityNotFoundException;
-import javax.swing.text.html.parser.Entity;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
-@SuppressWarnings("ControlFlowStatementWithoutBraces")
+
 @RestController
 public class UserControllers {
+
+    private static final Logger log = LoggerFactory.getLogger(SpringBootTaskApplication.class);
 
     @Autowired
     UserService userService;
