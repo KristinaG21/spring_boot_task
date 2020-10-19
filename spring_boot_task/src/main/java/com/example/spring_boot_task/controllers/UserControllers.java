@@ -2,7 +2,7 @@ package com.example.spring_boot_task.controllers;
 
 
 
-import com.example.spring_boot_task.SpringBootTaskApplication;
+
 import com.example.spring_boot_task.exception.UserNotFoundException;
 import com.example.spring_boot_task.model.User;
 import com.example.spring_boot_task.service.UserService;
@@ -23,7 +23,7 @@ import java.util.Optional;
 @RestController
 public class UserControllers {
 
-    private static final Logger log = LoggerFactory.getLogger(SpringBootTaskApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(UserControllers.class);
 
     @Autowired
     UserService userService;
@@ -35,7 +35,6 @@ public class UserControllers {
 
     @GetMapping("/users/{id}")
     public User getById(@PathVariable int id){
-
         User byId = userService.getById(id);
         if(byId==null)
             throw new UserNotFoundException("id:" +id);
@@ -67,8 +66,11 @@ public class UserControllers {
                 .fromCurrentRequestUri()
                 .path("/{id}")
                 .buildAndExpand(userSaved.getId()).toUri();
-
+        log.info("User is added");
       return ResponseEntity.created(location).build();
+
+
+
 
     }
 }

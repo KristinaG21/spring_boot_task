@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+
 import javax.validation.constraints.Size;
 
 @Entity
@@ -15,11 +15,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NotNull
+
     @Size(min=2,max=8)
     private String name;
 
-    @NotNull
+
     @Size(min=2)
     private String surname;
 
@@ -27,6 +27,13 @@ public class User {
     private int age;
 
     public User(String name, String surname,int age) {
+        this.name = name;
+        this.surname = surname;
+        this.age=age;
+    }
+
+    public User(int id, String name, String surname, int age) {
+       this.id= id;
         this.name = name;
         this.surname = surname;
         this.age=age;

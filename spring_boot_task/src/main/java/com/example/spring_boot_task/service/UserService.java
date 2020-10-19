@@ -3,6 +3,7 @@ package com.example.spring_boot_task.service;
 
 
 import com.example.spring_boot_task.model.User;
+
 import com.example.spring_boot_task.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,9 +14,8 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    @Autowired
-    UserRepository userRepository;
-
+   @Autowired
+     UserRepository userRepository;
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
