@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -33,6 +34,7 @@ public class UserControllers {
         return userService.getAllUsers();
     }
 
+
     @GetMapping("/users/{id}")
     public User getById(@PathVariable int id){
         User byId = userService.getById(id);
@@ -50,6 +52,7 @@ public class UserControllers {
 
 
     }
+
     @GetMapping("/users/age/{age}")
     public Optional<User> getByAge(@PathVariable int age){
         Optional<User> byAge = userService.getByAge(age);
@@ -60,7 +63,6 @@ public class UserControllers {
 
     @PostMapping("/users")
     public ResponseEntity<Object> saveUser(@Valid @RequestBody User user){
-
        User userSaved= userService.saveUser(user);
        if(userSaved==null)
            throw new UserNotFoundException("User not Found");
