@@ -105,27 +105,6 @@ class UserControllersTest {
         );
     }
 
-//    @Test
-//    public void saveUser() {
-//        final User user = new User("Kris","Gejenko",28);
-//        Mockito.when(userService.saveUser(argumentCaptor.capture())).thenReturn(null);
-//        userService.saveUser(user);
-//        User value = argumentCaptor.getValue();
-//        assertEquals(value, user);
-//        assertEquals(value.getName(), "Kris");
-//        assertEquals(value.getSurname(), "Gejenko");
-//        Mockito.verify(userRepository).save(value);
-//        Mockito.verifyNoMoreInteractions(userRepository);
-//    @Test
-//    void test_exception_custom() {
-//        Exception exception = assertThrows(
-//                UserNotFoundException.class,
-//                () -> getByAge());
-//
-//        assertTrue(exception.getMessage().contains("User not Found"));
-//        Mockito.verify(userService);
-//    }
-
 
 }
 
