@@ -2,7 +2,6 @@ package com.example.spring_boot_task.controllers;
 
 
 
-
 import com.example.spring_boot_task.exception.UserNotFoundException;
 import com.example.spring_boot_task.model.User;
 import com.example.spring_boot_task.service.UserService;
@@ -27,6 +26,7 @@ public class UserControllers {
 
     @Autowired
     UserService userService;
+
 
     @GetMapping("/users")
     public List<User> getAllUsers(){
@@ -62,6 +62,9 @@ public class UserControllers {
     public ResponseEntity<Object> saveUser(@Valid @RequestBody User user){
 
        User userSaved= userService.saveUser(user);
+       if(userSaved==null)
+           throw new UserNotFoundException("User not Found");
+        log.error("user is null!!!");
       URI location= ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
                 .path("/{id}")

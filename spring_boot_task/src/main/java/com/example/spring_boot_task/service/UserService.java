@@ -7,6 +7,7 @@ import com.example.spring_boot_task.model.User;
 import com.example.spring_boot_task.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import springfox.documentation.annotations.Cacheable;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,12 +18,20 @@ public class UserService {
    @Autowired
      UserRepository userRepository;
 
+
+
     public List<User> getAllUsers() {
         return userRepository.findAll();
 
     }
-
+    @Cacheable(value = "users")
     public User getById(int id) {
+        try {
+            long time = 3000L;
+            Thread.sleep(time);
+        } catch (InterruptedException e) {
+            throw new IllegalStateException(e);
+        }
         return userRepository.getById(id);
     }
 
@@ -42,4 +51,7 @@ public class UserService {
         userRepository.save(user);
         return user;
     }
+
+
 }
+

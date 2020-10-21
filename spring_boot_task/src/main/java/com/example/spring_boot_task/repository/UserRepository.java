@@ -19,4 +19,6 @@ public interface UserRepository extends JpaRepository<User,Integer> {
     Optional<User> findByFirstName(String name);
 
     Optional<User> findByAgeGreaterThan(int age);
+
+
 }
